@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app="shortUrlApp">
 
    <head>
       <title>URL Shortener</title>
       <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
       <link href="/public/style.css" rel="stylesheet" type="text/css">
+      <!--bootstrap-->
+       <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+
+        <!--probando angular-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="/public/js/app.js"></script>
    </head>
 
    <body>
-      <div class="container">
+      <div class="container text-center">
         <h2>API Project: URL Shortener Microservice</h2>
+        <br>
+        Technologies: Node, Express, Bootstrap 4, css 3, html 5, Mongoose and an attempt to use Angular
         <h3>User Story: </h3>
         <ol>
-          <li>I can POST a URL to <code>[project_url]/api/shorturl/new</code> and I will receive a shortened URL in the JSON response.<br>Example : <code>{"original_url":"www.google.com","short_url":1}</code></li>
+          <li>Is a full stack project in which, I can POST a URL to <code>[project_url]/api/shorturl/new</code> and I will receive a shortened URL in the JSON response.<br>Example : <code>{"original_url":"www.google.com","short_url":1}</code></li>
           <li>If I pass an invalid URL that doesn't follow the <code>http(s)://www.example.com(/more/routes)</code> format, the JSON response will contain an error like <code>{"error":"invalid URL"}</code><br>
           HINT: to be sure that the submitted url points to a valid site you can use the function <code>dns.lookup(host, cb)</code> from the <code>dns</code> core module.</li>
           <li>When I visit the shortened URL, it will redirect me to my original link.</li>
@@ -24,11 +42,11 @@
         <p>
           example: <code>POST [project_url]/api/shorturl/new</code> - <code>https://www.google.com</code>
         </p>
-        <form action="api/shorturl/new" method="POST">
+       <!-- <form action="api/shorturl/new" method="POST">
           <label for="url_input">URL to be shortened</label>
           <input id="url_input" type="text" name="url" value="https://www.freecodecamp.org">
           <input type="submit" value="POST URL">
-        </form>
+        </form> 
         <h3>Example Usage:</h3>
         <a href="https://thread-paper.glitch.me/api/shorturl/3">
           [this_project_url]/api/shorturl/3
@@ -36,12 +54,23 @@
 
         <h3>Will Redirect to:</h3>
         <p>https://www.freecodecamp.org/forum/</p>
-      </div>
+      </div>-->
+      <section ng-controller='shortAppCtrl'>
+        {{UrlToShorten}}
+        <br>
+        <input type="text" placeholder="Enter URL" ng-model="UrlToShorten">
+        <a class="btn btn-success" ng-href='/new/{{UrlToShorten}}'>Get ShortURL</a>
+      </section>
+      
+     
       <div class="footer">
         <p>
-          by <a href="https://www.freecodecamp.org">freeCodeCamp</a>
+          by <a href="https://github.com/juanda3111">Juan David</a>
         </p>
       </div>
+
+      
+
    </body>
 
 
